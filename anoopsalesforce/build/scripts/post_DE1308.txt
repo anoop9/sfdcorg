@@ -1,4 +1,0 @@
-//Update the field OutboundmessageBatchSize__c on mijnWerkCustomSettings
-MijnWerkCustomSettings__c mijnWerkCustomSettings = MijnWerkCustomSettings__c.getOrgDefaults();
-mijnWerkCustomSettings.OutboundmessageBatchSize__c = 50;
-update mijnWerkCustomSettings;
