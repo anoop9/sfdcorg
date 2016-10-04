@@ -1,0 +1,5 @@
+<apex:page standardController="Account" extensions="DynamicComponentExample">
+<apex:form >
+<apex:dynamicComponent componentValue="{!dynamicForm}"/>
+</apex:form>
+</apex:page>

@@ -1,0 +1,54 @@
+<project name="PSR for CB SFDC Deployment" basedir="." xmlns:sf="antlib:com.salesforce">
+
+	<!-- ========================================== -->
+	<!-- Default properties                         -->
+	<!-- ========================================== -->
+	<property file="build.properties"/>
+	<property name="src.dir" value="../src"/>
+
+	
+
+	<!-- ========================================== -->
+	<!-- Salesforce Migration Tool                  -->
+	<!-- ========================================== -->
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="lib/ant-salesforce_37.jar" />
+        </classpath>
+    </taskdef>
+
+	<!-- ========================================== -->
+	<!-- ANT additional utilities                   -->
+	<!-- ========================================== -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="lib/ant-contrib-1.0b2.jar"/>
+		</classpath>
+	</taskdef>
+
+	<!-- ========================================== -->
+	<!-- Deployment target                          -->
+	<!-- ========================================== -->
+	<!--<target name="deploy_metadata" depends="EnvironmentConfiguration">-->
+	<target name="deploy_metadata">
+		<echo message="START: SFDC Deployment" />
+		<echo message="Username:${sf.deploy.username}"/>
+		<echo message="Password:${sf.deploy.password}"/>
+		<echo message="Serverurl:${sf.deploy.serverurl}"/>
+		<echo message="checkOnly:${sf.checkOnly}"/>
+		<echo message="testLevel:${sf.testLevel}"/>
+
+		<echo message="-"/>
+		<echo message="Allowed 'testLevels' are : 'NoTestRun','RunSpecifiedTests'(not supported here),'RunLocalTests' and 'RunAllTestsInOrg'."/>
+
+		<sf:deploy 	username="${sf.deploy.username}"
+					password="${sf.deploy.password}"
+					serverurl="${sf.deploy.serverurl}"
+					deployRoot="${src.dir}"
+					maxPoll="${sf.maxPoll}"
+					pollWaitMillis="${sf.pollWaitMillis}"
+					checkOnly="${sf.checkOnly}"
+					testLevel="${sf.testLevel}"
+					ignoreWarnings="${sf.ignoreWarnings}" />
+	</target>
+</project>

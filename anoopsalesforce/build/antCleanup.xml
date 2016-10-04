@@ -1,0 +1,23 @@
+<project name="Pre Build clean up." basedir="." default="process">
+<!-- run this on commandline by typing: ant -f antCleanup.xml -->
+
+    <property name="src.dir" value="../src"/>
+
+	<target name="process">
+		
+	</target>
+	
+	
+	<target name="cleanupclass" >
+		<echo message="Class being cleaned up: ${Class}" />
+
+		<!-- remove the class from the profiles -->
+		<replaceregexp match="&lt;classAccesses&gt;\s*&lt;apexClass&gt;${Class}&lt;/apexClass&gt;\s*&lt;enabled&gt;(false|true)&lt;/enabled&gt;\s*&lt;/classAccesses&gt;\s*" replace="" flags="s" >
+            <fileset dir="${src.dir}" includes="**/*" />
+        </replaceregexp>
+
+	</target>
+
+
+
+</project>

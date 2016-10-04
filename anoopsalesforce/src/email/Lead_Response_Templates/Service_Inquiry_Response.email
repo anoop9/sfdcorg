@@ -1,0 +1,3 @@
+Dear {!NullValue(Lead.FirstName, "Sir or Madam")},Thank you for your interest in {!Organization.Name}. We look forward to working with {!NullValue(Lead.Company, "your company")}.  A services consultant will be in touch shortly to discuss your needs.Sincerely,{!User.Name}
+{!Organization.Name}
+{!User.Email}
